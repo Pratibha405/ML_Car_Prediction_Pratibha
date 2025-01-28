@@ -9,7 +9,7 @@ import pandas as pd
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 # Load model
-model = joblib.load('.\car_price_model.model')  # Adjust the path if needed
+model = joblib.load('E:\Semester II\ML\ML_Car_Prediction_Pratibha\car_price_model.model')  # Adjust the path if needed
 
 # Form inputs for x_1, x_2, x_3 (mileage, year, and max power)
 x_1 = html.Div(
@@ -40,7 +40,6 @@ x_3 = html.Div(
 )
 
 # Prediction buttons and output divs
-
 submit_model = html.Div(
     [
         dbc.Button(id="submit_model", children="Calculate Price (Model)", color="primary", className="me-1"),
@@ -55,15 +54,27 @@ form = dbc.Form([x_1, x_2, x_3, submit_model], className="mb-3")
 
 # Explain text for the page
 text = html.Div([
-    html.H1("Car Price Prediction Model"),
-    html.P("Enter values for year, mileage, and max power to predict car prices."),
+    html.H1("Car Price Prediction Model", className="text-center"),
+    html.P("Enter values for year, mileage, and max power to predict car prices.", className="text-center"),
 ])
 
 # Layout of the app
-layout = dbc.Container([
-    text,
-    form 
-], fluid=True)
+layout = dbc.Container(
+    [
+        dbc.Row(
+            dbc.Col(
+                [
+                    text,
+                    form
+                ],
+                width=6  # Adjust width as needed
+            ),
+            className="d-flex justify-content-center align-items-center",
+            style={"minHeight": "100vh"}
+        )
+    ],
+    fluid=True
+)
 
 # Assign the layout to the app
 app.layout = layout
