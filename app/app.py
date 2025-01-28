@@ -9,7 +9,7 @@ import pandas as pd
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 # Load model
-model = joblib.load('E:/Semester II/ML/car_price_model.model')  # Adjust the path if needed
+model = joblib.load('.\car_price_model.model')  # Adjust the path if needed
 
 # Form inputs for x_1, x_2, x_3 (mileage, year, and max power)
 x_1 = html.Div(
